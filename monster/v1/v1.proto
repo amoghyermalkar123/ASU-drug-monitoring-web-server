@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package v1;
+
+
+
+
+message UserRequest {
+     int32 id = 1;  // Unique ID number for a Customer.
+  string name = 2;
+  
+}
+
+message UserResponse {
+     int32 id = 1;
+  bool success = 3;
+}
+
+message PatientRequest {
+  int32 id = 4;
+  string name = 5;
+}
+
+message PatientResponse {
+  int32 id = 4;
+  string name = 6;
+}
+service Users {   
+
+  // Create a new user - A simple RPC 
+
+  rpc CreateUser (UserRequest) returns (UserResponse) {}
+
+  rpc GetPatient (PatientRequest) returns (stream PatientResponse) {}
+}
